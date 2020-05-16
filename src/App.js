@@ -9,6 +9,7 @@ const BodyContainer = styled.div`
   margin: 100px;
   width: 80%;
   display: flex;
+  flex-direction: column;
 `;
 
 function App() {
