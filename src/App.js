@@ -34,7 +34,11 @@ const Header = styled.header`
   text-align: center;
 `;
 
-const getGraphData = (comments) => {
+/**
+ * Method to convert comments into the format of data
+ * accepted by the Line component,
+ */
+export const getGraphData = (comments) => {
   if (comments.length) {
     return comments.map((comment, index) => ({
       x: index + 1,

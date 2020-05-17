@@ -44,10 +44,12 @@ const Text = styled.div`
   line-height: 1.5;
 `;
 
-const getStars = (rating) => {
+export const getStars = (rating) => {
   const stars = [];
   for (let index = 1; index <= 5; index++) {
-    index <= rating ? stars.push(<StarFilled />) : stars.push(<StarEmpty />);
+    index <= rating
+      ? stars.push(<StarFilled key={index} />)
+      : stars.push(<StarEmpty key={index} />);
   }
   return stars;
 };
