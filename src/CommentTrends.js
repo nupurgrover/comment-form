@@ -4,18 +4,16 @@ import { ResponsiveLine } from "@nivo/line";
 
 const GraphContainer = styled.div`
   height: 400px;
-  width: 600px;
+  flex-basis: 60%;
 `;
 
 const CommentTrends = ({ graphData }) => {
-  console.log("graphData :>> ", graphData);
   return (
     <GraphContainer>
       <ResponsiveLine
         curve="monotoneX"
-        height={400}
         data={[{ id: "Comment Rating", data: graphData }]}
-        margin={{ top: 20, right: 20, bottom: 60, left: 80 }}
+        margin={{ top: 20, right: 20, bottom: 50, left: 50 }}
         xScale={{
           type: "linear",
           min: 0,

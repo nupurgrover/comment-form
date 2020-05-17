@@ -3,7 +3,6 @@ import styled from "styled-components";
 import "./App.css";
 
 import CommentForm from "./CommentForm";
-import NewCommentList from "./NewCommentList";
 import CommentList from "./CommentList";
 import CommentTrends from "./CommentTrends";
 
@@ -12,17 +11,17 @@ const BodyContainer = styled.div`
   flex-direction: column;
   max-width: 100%;
   margin: 0 auto;
-  padding: 50px;
-  @media (min-width: 960px) {
-    width: 1220px;
-  }
+  padding: 40px;
 `;
 
 const FormAndGraphContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin-bottom: 50px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const getGraphData = (comments) => {

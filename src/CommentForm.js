@@ -8,7 +8,10 @@ const InputForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 300px;
+  flex-basis: 30%;
+  @media (max-width: 768px) {
+    margin-bottom: 50px;
+  }
 `;
 
 const StyledButton = styled.button`
