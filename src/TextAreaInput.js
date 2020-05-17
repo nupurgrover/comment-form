@@ -11,18 +11,11 @@ const StyledTextArea = styled.textarea`
   line-height: 1.2;
   padding: 15px;
   background: transparent;
+  outline: none;
 `;
 
-const TextAreaInput = ({ placeholder, name, value, onChange }) => {
-  return (
-    <StyledTextArea
-      type="textarea"
-      placeholder={placeholder}
-      name={name}
-      value={value}
-      onChange={onChange}
-    />
-  );
+const TextAreaInput = (props) => {
+  return <StyledTextArea type="textarea" {...props} />;
 };
 
 export default TextAreaInput;

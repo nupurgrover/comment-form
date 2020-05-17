@@ -11,6 +11,23 @@ const InputForm = styled.form`
   width: 300px;
 `;
 
+const StyledButton = styled.button`
+  font-size: 16px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  padding: 0 15px;
+  height: 40px;
+  border-radius: 5px;
+  background: #242121;
+  color: white;
+  outline: none;
+
+  &:hover {
+    box-shadow: inset 0 0 0 2px rgb(36, 33, 33, 0.2);
+    background: linear-gradient(-185deg, #242121, #605c5c);
+  }
+`;
+
 const CommentForm = ({ addNewComment }) => {
   const [formState, setFormState] = useState({
     name: "",
@@ -25,11 +42,8 @@ const CommentForm = ({ addNewComment }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log("formState :>> ", formState);
     addNewComment(formState);
   };
-
-  const isFormDisabled = false;
 
   return (
     <InputForm onSubmit={handleSubmit}>
@@ -39,6 +53,7 @@ const CommentForm = ({ addNewComment }) => {
         type="text"
         value={formState.name}
         onChange={onInputChange}
+        required
       />
       <TextInput
         placeholder="Email"
@@ -46,24 +61,27 @@ const CommentForm = ({ addNewComment }) => {
         type="email"
         value={formState.email}
         onChange={onInputChange}
+        required
       />
       <TextInput
         placeholder="Rating"
         name="rating"
         type="number"
+        min="1"
+        max="5"
         value={formState.rating || null}
         onChange={onInputChange}
+        required
       />
       <TextAreaInput
         placeholder="Comment"
         name="commentText"
         value={formState.commentText}
         onChange={onInputChange}
+        required
       />
 
-      <button type="submit" disabled={isFormDisabled}>
-        Submit Comment
-      </button>
+      <StyledButton type="submit">Submit</StyledButton>
     </InputForm>
   );
 };
