@@ -1,8 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { ReactComponent as StarFilled } from "./star-filled.svg";
+import { ReactComponent as StarEmpty } from "./star-empty.svg";
 
 const Container = styled.div`
   display: flex;
+`;
+
+const InnerContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 const Avatar = styled.div`
@@ -22,11 +30,13 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  width: 100%;
 `;
 
 const Name = styled.div`
   font-size: 16px;
   margin-bottom: 5px;
+  flex-basis: 70%;
 `;
 
 const Text = styled.div`
@@ -34,13 +44,26 @@ const Text = styled.div`
   line-height: 1.5;
 `;
 
+const getStars = (rating) => {
+  const stars = [];
+  for (let index = 1; index <= 5; index++) {
+    index <= rating ? stars.push(<StarFilled />) : stars.push(<StarEmpty />);
+  }
+  return stars;
+};
+
 const Comment = ({ comment }) => {
   const avatarLetter = comment.name.charAt(0).toUpperCase();
+
   return (
     <Container>
       <Avatar>{avatarLetter}</Avatar>
+
       <Content>
-        <Name>{comment.name}</Name>
+        <InnerContainer>
+          <Name>{comment.name}</Name>
+          <div>{getStars(comment.rating)}</div>
+        </InnerContainer>
         <Text>{comment.commentText}</Text>
       </Content>
     </Container>
