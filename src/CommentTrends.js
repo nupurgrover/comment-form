@@ -33,7 +33,7 @@ const CommentTrends = ({ graphData }) => {
           format: (e) => Math.floor(e) === e && e,
         }}
         axisBottom={{
-          legend: "Number Of Comments",
+          legend: "Number of Comments",
           legendOffset: 36,
           legendPosition: "middle",
           format: (e) => Math.floor(e) === e && e,

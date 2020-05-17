@@ -24,9 +24,9 @@ const CommentList = ({ comments }) => {
     <ListContainer>
       <Header>{comments.length} comments</Header>
       <List>
-        {comments.map((comment) => {
+        {comments.map((comment, index) => {
           return (
-            <li>
+            <li key={`comment-${index}`}>
               <Comment comment={comment} />
             </li>
           );

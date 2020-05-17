@@ -26,10 +26,12 @@ const Content = styled.div`
 
 const Name = styled.div`
   font-size: 16px;
+  margin-bottom: 5px;
 `;
 
 const Text = styled.div`
   font-size: 14px;
+  line-height: 1.5;
 `;
 
 const Comment = ({ comment }) => {
