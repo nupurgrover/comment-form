@@ -7,15 +7,20 @@ import CommentList from "./CommentList";
 import CommentTrends from "./CommentTrends";
 
 const BodyContainer = styled.div`
-  margin: 100px;
-  width: 80%;
   display: flex;
   flex-direction: column;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 50px;
+  @media (min-width: 960px) {
+    width: 1220px;
+  }
 `;
 
 const FormAndGraphContainer = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 `;
 
 const getGraphData = (comments) => {
@@ -46,14 +51,14 @@ function App() {
   // ];
 
   return (
-    <div className="App">
+    <div>
       <header className="App-header">
         <p>Comment Form</p>
       </header>
       <BodyContainer>
         <FormAndGraphContainer>
           <CommentForm addNewComment={addNewComment} />
-          <div style={{ height: "900px" }}>
+          <div style={{ height: "400px" }}>
             <CommentTrends graphData={graphData} />
           </div>
         </FormAndGraphContainer>

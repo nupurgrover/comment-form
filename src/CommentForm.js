@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import TextInput from "./TextInput";
+import TextAreaInput from "./TextAreaInput";
 
 const InputForm = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  width: 300px;
 `;
 
 const CommentForm = ({ addNewComment }) => {
@@ -48,13 +51,12 @@ const CommentForm = ({ addNewComment }) => {
         placeholder="Rating"
         name="rating"
         type="number"
-        value={formState.rating}
+        value={formState.rating || null}
         onChange={onInputChange}
       />
-      <TextInput
+      <TextAreaInput
         placeholder="Comment"
         name="commentText"
-        type="text"
         value={formState.commentText}
         onChange={onInputChange}
       />
