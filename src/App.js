@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import "./App.css";
 
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
@@ -24,6 +23,17 @@ const FormAndGraphContainer = styled.div`
   }
 `;
 
+const Header = styled.header`
+  background-color: #041d4f;
+  height: 40px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  text-align: center;
+`;
+
 const getGraphData = (comments) => {
   if (comments.length) {
     return comments.map((comment, index) => ({
@@ -45,9 +55,7 @@ function App() {
 
   return (
     <div>
-      <header className="App-header">
-        <p>Comment Form</p>
-      </header>
+      <Header>Sentiment Analysis Tool</Header>
       <BodyContainer>
         <FormAndGraphContainer>
           <CommentForm addNewComment={addNewComment} />
