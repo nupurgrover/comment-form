@@ -22,7 +22,9 @@ const List = styled.ul`
 const CommentList = ({ comments }) => {
   return (
     <ListContainer>
-      <Header>{comments.length} comments</Header>
+      <Header>
+        {`${comments.length} ${comments.length === 1 ? "comment" : "comments"}`}
+      </Header>
       <List>
         {comments.map((comment, index) => {
           return (

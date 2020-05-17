@@ -25,7 +25,7 @@ const FormAndGraphContainer = styled.div`
 
 const Header = styled.header`
   background-color: #041d4f;
-  height: 40px;
+  height: 30px;
   padding: 20px;
   align-items: center;
   justify-content: center;
@@ -37,7 +37,7 @@ const Header = styled.header`
 const getGraphData = (comments) => {
   if (comments.length) {
     return comments.map((comment, index) => ({
-      x: index,
+      x: index + 1,
       y: comment.rating,
     }));
   }

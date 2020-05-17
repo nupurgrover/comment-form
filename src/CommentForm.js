@@ -21,23 +21,28 @@ const StyledButton = styled.button`
   padding: 0 15px;
   height: 40px;
   border-radius: 5px;
-  background: #242121;
+  background: #041d4f;
   color: white;
   outline: none;
 
+  &:disabled {
+    background-color: #041d4f;
+    opacity: 0.5;
+  }
+
   &:hover {
-    box-shadow: inset 0 0 0 2px rgb(36, 33, 33, 0.2);
-    background: linear-gradient(-185deg, #242121, #605c5c);
+    background: linear-gradient(-185deg, #041d4f, #163a81);
   }
 `;
 
 const CommentForm = ({ addNewComment }) => {
-  const [formState, setFormState] = useState({
+  const emptyFormState = {
     name: "",
     email: "",
     rating: 0,
     commentText: "",
-  });
+  };
+  const [formState, setFormState] = useState(emptyFormState);
 
   const onInputChange = (event) => {
     setFormState({ ...formState, [event.target.name]: event.target.value });
@@ -46,7 +51,14 @@ const CommentForm = ({ addNewComment }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     addNewComment(formState);
+    setFormState(emptyFormState);
   };
+
+  const isFormDisabled =
+    formState.name === emptyFormState.name ||
+    formState.email === emptyFormState.email ||
+    formState.rating === emptyFormState.rating ||
+    formState.commentText === emptyFormState.commentText;
 
   return (
     <InputForm onSubmit={handleSubmit}>
@@ -72,7 +84,7 @@ const CommentForm = ({ addNewComment }) => {
         type="number"
         min="1"
         max="5"
-        value={formState.rating || null}
+        value={formState.rating || ""}
         onChange={onInputChange}
         required
       />
@@ -84,7 +96,9 @@ const CommentForm = ({ addNewComment }) => {
         required
       />
 
-      <StyledButton type="submit">Submit</StyledButton>
+      <StyledButton type="submit" disabled={isFormDisabled}>
+        Submit
+      </StyledButton>
     </InputForm>
   );
 };
