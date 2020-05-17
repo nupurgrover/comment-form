@@ -1,36 +1,38 @@
 import React from "react";
-import { Comment, List, Avatar } from "antd";
+import styled from "styled-components";
+
+import Comment from "./Comment";
+
+const Header = styled.div`
+  border-bottom: 1px solid #f0f0f0;
+  padding: 15px 0;
+  margin-bottom: 30px;
+  font-size: 20px;
+`;
+
+const ListContainer = styled.div`
+  outline: none;
+`;
+
+const List = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
 
 const CommentList = ({ comments }) => {
   return (
-    <div>
-      <List
-        header={`${comments.length} comments`}
-        itemLayout="horizontal"
-        dataSource={comments}
-        renderItem={(item) => {
-          const firstLetter = item.name.charAt(0).toUpperCase();
-
+    <ListContainer>
+      <Header>{comments.length} comments</Header>
+      <List>
+        {comments.map((comment) => {
           return (
             <li>
-              <Comment
-                style={{ textAlign: "left" }}
-                author={item.name}
-                content={item.commentText}
-                avatar={
-                  <Avatar
-                    style={{ backgroundColor: "grey", verticalAlign: "middle" }}
-                    size="large"
-                  >
-                    {firstLetter}
-                  </Avatar>
-                }
-              />
+              <Comment comment={comment} />
             </li>
           );
-        }}
-      />
-    </div>
+        })}
+      </List>
+    </ListContainer>
   );
 };
 

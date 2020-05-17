@@ -3,6 +3,7 @@ import styled from "styled-components";
 import "./App.css";
 
 import CommentForm from "./CommentForm";
+import NewCommentList from "./NewCommentList";
 import CommentList from "./CommentList";
 import CommentTrends from "./CommentTrends";
 
@@ -21,6 +22,7 @@ const FormAndGraphContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  margin-bottom: 50px;
 `;
 
 const getGraphData = (comments) => {
@@ -30,7 +32,7 @@ const getGraphData = (comments) => {
       y: comment.rating,
     }));
   }
-  return [{ x: 1, y: 1 }];
+  return [{ x: 0, y: 0 }];
 };
 
 function App() {
@@ -41,14 +43,6 @@ function App() {
   };
 
   const graphData = getGraphData(comments);
-  // const graphData = [
-  //   { x: 1, y: 5 },
-  //   { x: 2, y: 4 },
-  //   { x: 3, y: 0 },
-  //   { x: 4, y: 1 },
-  //   { x: 5, y: 2 },
-  //   { x: 6, y: 3 },
-  // ];
 
   return (
     <div>
@@ -58,9 +52,7 @@ function App() {
       <BodyContainer>
         <FormAndGraphContainer>
           <CommentForm addNewComment={addNewComment} />
-          <div style={{ height: "400px" }}>
-            <CommentTrends graphData={graphData} />
-          </div>
+          <CommentTrends graphData={graphData} />
         </FormAndGraphContainer>
         <CommentList comments={comments} />
       </BodyContainer>
