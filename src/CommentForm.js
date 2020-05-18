@@ -24,10 +24,12 @@ const StyledButton = styled.button`
   background: #041d4f;
   color: white;
   outline: none;
+  cursor: pointer;
 
   &:disabled {
     background-color: #041d4f;
     opacity: 0.5;
+    pointer-events: none;
   }
 
   &:hover {
